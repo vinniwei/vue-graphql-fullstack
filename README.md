@@ -1,8 +1,11 @@
-vue-graphql-fullstack
+# vue-graphql-fullstack
 
-#Overview
+# Overview
 Building a Instagram clone
 
-#Stack
-Vue.js - GraphQL (Apollo Server) - Node.js - MongoDB (w/ Mongoose hosted on mLab)
-Zeit Severless Deployments
+# Stack
+- Vue.js 
+- GraphQL (Apollo Server) 
+- Node.js 
+- MongoDB (w/ Mongoose hosted on mLab)
+- Zeit Severless Deployments
