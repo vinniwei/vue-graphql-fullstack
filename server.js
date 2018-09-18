@@ -5,12 +5,13 @@ const fs = require("fs");
 const path = require("path");
 
 // Custom Dependencies
+const filePath = path.join(__dirname, "typeDefs.gql");
+const typeDefs = fs.readFileSync(filePath, "utf-8");
+const resolvers = require("./resolvers");
+
 require("dotenv").config({ path: "./variable.env" });
 const User = require("./models/User");
 const Post = require("./models/Post");
-
-const filePath = path.join(__dirname, "typeDefs.gql");
-const typeDefs = fs.readFileSync(filePath, "utf-8");
 
 mongoose
   .connect(
@@ -21,7 +22,12 @@ mongoose
   .catch(err => console.error(err));
 
 const server = new ApolloServer({
-  typeDefs
+  typeDefs,
+  resolvers,
+  context: {
+    User,
+    Post
+  }
 });
 
 server.listen().then(({ url }) => {
