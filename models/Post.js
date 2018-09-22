@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  createBy: {
+  createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "User"
@@ -48,4 +48,4 @@ const PostSchema = new mongoose.Schema({
   ]
 });
 
-module.export = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Post", PostSchema);
