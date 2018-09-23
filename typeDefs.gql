@@ -28,7 +28,7 @@ type Message {
 }
 
 type Query {
-  getUser: User
+  getPosts: [Post]
 }
 
 type Mutation {
