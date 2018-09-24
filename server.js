@@ -5,14 +5,17 @@ const fs = require("fs");
 const path = require("path");
 
 // Custom Dependencies
+// Import typeDefs and resolvers
 const filePath = path.join(__dirname, "typeDefs.gql");
 const typeDefs = fs.readFileSync(filePath, "utf-8");
 const resolvers = require("./resolvers");
 
+// Import Environment Variables and Mongoose Models
 require("dotenv").config({ path: "./variable.env" });
 const User = require("./models/User");
 const Post = require("./models/Post");
 
+// Connect to Mlab Database
 mongoose
   .connect(
     process.env.MONGO_URI,
@@ -21,6 +24,7 @@ mongoose
   .then(() => console.log("DB Connected"))
   .catch(err => console.error(err));
 
+// Create Apollo/GraphQL Server using typeDefs, resolvers and context object
 const server = new ApolloServer({
   typeDefs,
   resolvers,
