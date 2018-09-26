@@ -23,6 +23,8 @@ mongoose
   )
   .then(() => console.log("DB Connected"))
   .catch(err => console.error(err));
+// Set useCreateIndex - avoid DeprecationWarning
+mongoose.set("useCreateIndex", true);
 
 // Create Apollo/GraphQL Server using typeDefs, resolvers and context object
 const server = new ApolloServer({
